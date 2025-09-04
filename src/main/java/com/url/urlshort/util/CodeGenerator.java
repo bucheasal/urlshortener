@@ -26,6 +26,10 @@ public class CodeGenerator {
 
     //스킴 없을때 http://
     public static String normalizeUrl(String raw) {
-        String url = raw ==
+        String url = raw == null ? "" : raw.trim();
+        if (!url.matches("(?i)^[a-z][a-z0-9+.-]*://.*$")) {
+            url = "http://" + url;
+        }
+        return url;
     }
 }
